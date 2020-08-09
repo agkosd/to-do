@@ -1,3 +1,4 @@
+let taskCount = document.querySelectorAll("ul li").length;
 $("ul").on("click", "li", function () {
   $(this).toggleClass("completed");
 });
@@ -8,6 +9,10 @@ $("ul").on("click", "span", function (e) {
     .parent()
     .fadeOut(500, function () {
       $(this).remove();
+      taskCount--;
+      if (taskCount === 0) {
+        alert("All done for the day !");
+      }
     });
   e.stopPropagation();
 });
